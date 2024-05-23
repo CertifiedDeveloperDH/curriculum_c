@@ -46,10 +46,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-.navbar-collapse{
-  justify-content: flex-end;
-}
-
 .link:hover {
   text-decoration: underline;
 }

@@ -14,9 +14,9 @@ export const Navc = () => {
   return (
     <Navbar expand="lg" className={styles.nav}>
       <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>
+        <Navbar.Toggle className= "ms-auto" aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse className="ms-auto" id="basic-navbar-nav">
+          <Nav className="ms-auto">
             <Nav.Link
               className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
               href="/"
