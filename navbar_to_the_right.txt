@@ -1,0 +1,82 @@
+To align the hamburger button and the navbar to the right side of the screen, you'll need to adjust the CSS styles and possibly tweak the structure of your React component. Here’s how you can achieve this:
+
+Update CSS Styles: Add the necessary styles to align the navbar to the right.
+
+Modify the Navbar Component: Ensure the Navbar.Toggle and Navbar.Collapse are wrapped correctly to align them properly.
+
+Step 1: Update CSS Styles
+In your layout.module.css file, add or update the styles to align items to the right.
+
+css
+Copiar código
+.nav {
+  justify-content: flex-end; /* Aligns the navbar content to the right */
+}
+
+.navbar-collapse {
+  justify-content: flex-end; /* Aligns the collapsed content to the right */
+}
+
+.link {
+  margin-left: 15px; /* Adds spacing between links */
+}
+
+.active {
+  font-weight: bold; /* Example of an active link style */
+}
+Step 2: Modify the Navbar Component
+Update your Navc component to ensure it uses the right-aligned styles:
+
+javascript
+Copiar código
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import styles from "../styles/layout.module.css";
+
+export const Navc = () => {
+  const pathname = usePathname();
+
+  return (
+    <Navbar expand="lg" className={styles.nav}>
+      <Container>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className={styles["navbar-collapse"]}>
+          <Nav className="me-auto">
+            <Nav.Link
+              className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
+              href="/"
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              className={`${styles.link} ${pathname === "/verify" ? styles.active : ""}`}
+              href="/verify"
+            >
+              Verify
+            </Nav.Link>
+            <Nav.Link
+              className={`${styles.link} ${pathname === "/quotes" ? styles.active : ""}`}
+              href="/quotes"
+            >
+              Quotes
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+Explanation
+CSS Adjustments:
+
+The .nav class is set to justify-content: flex-end, which moves the navbar content to the right side.
+The .navbar-collapse class is also set to justify-content: flex-end to ensure the collapsed items (when the navbar is toggled) align to the right.
+Added margin to the .link class for spacing between the nav links.
+Component Structure:
+
+The className for Navbar.Collapse is set to styles["navbar-collapse"] to apply the right-alignment.
