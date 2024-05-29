@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Carouselc } from "../carousel/Carousel.tsx"
 
 import {
   decrement,
@@ -25,6 +26,7 @@ export const Counter = () => {
 
   return (
     <div>
+      <Carouselc/>
       <div className={styles.row}>
         <button
           className={styles.button}
